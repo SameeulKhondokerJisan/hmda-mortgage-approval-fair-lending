@@ -127,3 +127,7 @@ codes. No account is needed. Raw files are not stored in this repository.
   assumption to replace.
 * Rate spread is measured against the average prime offer rate on the lock date, which HMDA does not publish, so
   the pricing comparison cannot control for the timing of the rate lock beyond the lender x state effect.
+
+## License
+
+Code, SQL and documentation are released under the [MIT License](LICENSE). The data is not covered by this license: it belongs to the publishers listed under Data and remains under their terms.
