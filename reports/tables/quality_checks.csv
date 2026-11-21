@@ -1,0 +1,17 @@
+rule,severity,failures
+"Row count at least 4,000,000",hard,0
+Activity year is 2025,hard,0
+Loan purpose is home purchase (1),hard,0
+"Action taken is 1, 2 or 3",hard,0
+LEI is 20 characters,hard,0
+Loan amount is a positive number,hard,0
+Debt-to-income uses the published codes,hard,0
+Denied applications list a denial reason (exempt reporters excluded),soft,0
+Every lender LEI has a name in the filers list,soft,1296
+Income missing or not positive,soft,269292
+"Loan-to-value missing, exempt or outside 1-250%",soft,541932
+Debt-to-income NA or exempt,soft,383703
+Race or ethnicity not reported,soft,872503
+Partially exempt reporter (1111 codes),soft,131409
+County code missing,soft,66496
+Identical public records (public file has no application ID),soft,7363

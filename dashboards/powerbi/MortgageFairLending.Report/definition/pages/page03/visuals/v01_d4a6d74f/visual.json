@@ -1,0 +1,143 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.4.0/schema.json",
+  "name": "v01_d4a6d74f",
+  "position": {
+    "x": 10,
+    "y": 10,
+    "z": 1000,
+    "width": 630,
+    "height": 300,
+    "tabOrder": 1000
+  },
+  "visual": {
+    "visualType": "tableEx",
+    "query": {
+      "queryState": {
+        "Values": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "dim_group"
+                    }
+                  },
+                  "Property": "applicant_group"
+                }
+              },
+              "queryRef": "dim_group.applicant_group",
+              "nativeQueryRef": "applicant_group"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "fact_applications"
+                    }
+                  },
+                  "Property": "Applications"
+                }
+              },
+              "queryRef": "fact_applications.Applications",
+              "nativeQueryRef": "Applications"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "fact_applications"
+                    }
+                  },
+                  "Property": "Approval rate"
+                }
+              },
+              "queryRef": "fact_applications.Approval rate",
+              "nativeQueryRef": "Approval rate"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "fact_applications"
+                    }
+                  },
+                  "Property": "Approval AIR"
+                }
+              },
+              "queryRef": "fact_applications.Approval AIR",
+              "nativeQueryRef": "Approval AIR"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "fact_applications"
+                    }
+                  },
+                  "Property": "Below four-fifths"
+                }
+              },
+              "queryRef": "fact_applications.Below four-fifths",
+              "nativeQueryRef": "Below four-fifths"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "fact_applications"
+                    }
+                  },
+                  "Property": "Denial rate"
+                }
+              },
+              "queryRef": "fact_applications.Denial rate",
+              "nativeQueryRef": "Denial rate"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "fact_applications"
+                    }
+                  },
+                  "Property": "Denial-rate ratio"
+                }
+              },
+              "queryRef": "fact_applications.Denial-rate ratio",
+              "nativeQueryRef": "Denial-rate ratio"
+            }
+          ]
+        }
+      }
+    },
+    "visualContainerObjects": {
+      "title": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "text": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Approval and denial rates against White applicants'"
+                }
+              }
+            }
+          }
+        }
+      ]
+    }
+  }
+}

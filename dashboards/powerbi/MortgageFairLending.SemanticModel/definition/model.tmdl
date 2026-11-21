@@ -1,0 +1,19 @@
+model Model
+	culture: en-US
+	defaultPowerBIDataSourceVersion: powerBI_V3
+	sourceQueryCulture: en-US
+	dataAccessOptions
+		legacyRedirects
+		returnErrorValuesAsNull
+
+annotation PBI_QueryOrder = ["DataFolder", "fact_applications", "income_tract", "dti_profile", "denial_reasons", "gap_ladder", "pricing_gaps", "lender_screen", "county_rates", "dim_group"]
+
+ref table fact_applications
+ref table income_tract
+ref table dti_profile
+ref table denial_reasons
+ref table gap_ladder
+ref table pricing_gaps
+ref table lender_screen
+ref table county_rates
+ref table dim_group

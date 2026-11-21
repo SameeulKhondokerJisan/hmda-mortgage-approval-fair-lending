@@ -1,0 +1,45 @@
+table income_tract
+
+	measure 'Denial rate (income and tract)' = DIVIDE(SUM(income_tract[denied]), SUM(income_tract[applications]))
+		formatString: 0.0%
+
+	column applicant_group
+		dataType: string
+		summarizeBy: none
+		sourceColumn: applicant_group
+
+	column income_band
+		dataType: string
+		summarizeBy: none
+		sourceColumn: income_band
+
+	column tract_minority_band
+		dataType: string
+		summarizeBy: none
+		sourceColumn: tract_minority_band
+
+	column applications
+		dataType: int64
+		summarizeBy: sum
+		sourceColumn: applications
+
+	column approved
+		dataType: double
+		summarizeBy: sum
+		sourceColumn: approved
+
+	column denied
+		dataType: double
+		summarizeBy: sum
+		sourceColumn: denied
+
+	partition income_tract = m
+		mode: import
+		source =
+				let
+				    Source = Csv.Document(File.Contents(DataFolder & "income_tract.csv"), [Delimiter=",", Columns=6, Encoding=65001, QuoteStyle=QuoteStyle.Csv]),
+				    Headers = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),
+				    Typed = Table.TransformColumnTypes(Headers, {{"applicant_group", type text}, {"income_band", type text}, {"tract_minority_band", type text}, {"applications", Int64.Type}, {"approved", type number}, {"denied", type number}}, "en-US")
+				in
+				    Typed
+

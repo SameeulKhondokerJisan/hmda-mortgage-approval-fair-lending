@@ -1,0 +1,95 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.4.0/schema.json",
+  "name": "v08_5efdf0b6",
+  "position": {
+    "x": 650,
+    "y": 410,
+    "z": 8000,
+    "width": 620,
+    "height": 300,
+    "tabOrder": 8000
+  },
+  "visual": {
+    "visualType": "clusteredBarChart",
+    "query": {
+      "queryState": {
+        "Category": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "denial_reasons"
+                    }
+                  },
+                  "Property": "reason"
+                }
+              },
+              "queryRef": "denial_reasons.reason",
+              "nativeQueryRef": "reason"
+            }
+          ]
+        },
+        "Series": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "dim_group"
+                    }
+                  },
+                  "Property": "applicant_group"
+                }
+              },
+              "queryRef": "dim_group.applicant_group",
+              "nativeQueryRef": "applicant_group"
+            }
+          ]
+        },
+        "Y": {
+          "projections": [
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "denial_reasons"
+                    }
+                  },
+                  "Property": "Share of denials citing reason"
+                }
+              },
+              "queryRef": "denial_reasons.Share of denials citing reason",
+              "nativeQueryRef": "Share of denials citing reason"
+            }
+          ]
+        }
+      }
+    },
+    "visualContainerObjects": {
+      "title": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "text": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Denial reasons by applicant group'"
+                }
+              }
+            }
+          }
+        }
+      ]
+    }
+  }
+}

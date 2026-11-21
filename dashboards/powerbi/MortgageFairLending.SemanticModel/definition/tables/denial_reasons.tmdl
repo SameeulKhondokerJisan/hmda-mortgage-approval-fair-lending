@@ -1,0 +1,41 @@
+table denial_reasons
+
+	measure 'Share of denials citing reason' = DIVIDE(SUM(denial_reasons[denied_citing]), SUM(denial_reasons[denied_apps]))
+		formatString: 0.0%
+
+	column applicant_group
+		dataType: string
+		summarizeBy: none
+		sourceColumn: applicant_group
+
+	column reason
+		dataType: string
+		summarizeBy: none
+		sourceColumn: reason
+
+	column denied_citing
+		dataType: int64
+		summarizeBy: sum
+		sourceColumn: denied_citing
+
+	column denied_apps
+		dataType: int64
+		summarizeBy: sum
+		sourceColumn: denied_apps
+
+	column share_of_denials
+		dataType: double
+		formatString: 0.0%
+		summarizeBy: sum
+		sourceColumn: share_of_denials
+
+	partition denial_reasons = m
+		mode: import
+		source =
+				let
+				    Source = Csv.Document(File.Contents(DataFolder & "denial_reasons.csv"), [Delimiter=",", Columns=5, Encoding=65001, QuoteStyle=QuoteStyle.Csv]),
+				    Headers = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),
+				    Typed = Table.TransformColumnTypes(Headers, {{"applicant_group", type text}, {"reason", type text}, {"denied_citing", Int64.Type}, {"denied_apps", Int64.Type}, {"share_of_denials", type number}}, "en-US")
+				in
+				    Typed
+

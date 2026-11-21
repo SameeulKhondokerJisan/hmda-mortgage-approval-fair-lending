@@ -1,0 +1,77 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.4.0/schema.json",
+  "name": "v04_08adf51f",
+  "position": {
+    "x": 10,
+    "y": 110,
+    "z": 4000,
+    "width": 560,
+    "height": 600,
+    "tabOrder": 4000
+  },
+  "visual": {
+    "visualType": "clusteredBarChart",
+    "query": {
+      "queryState": {
+        "Category": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "lender_screen"
+                    }
+                  },
+                  "Property": "lender_name"
+                }
+              },
+              "queryRef": "lender_screen.lender_name",
+              "nativeQueryRef": "lender_name"
+            }
+          ]
+        },
+        "Y": {
+          "projections": [
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "lender_screen"
+                    }
+                  },
+                  "Property": "Adjusted Black gap (pp)"
+                }
+              },
+              "queryRef": "lender_screen.Adjusted Black gap (pp)",
+              "nativeQueryRef": "Adjusted Black gap (pp)"
+            }
+          ]
+        }
+      }
+    },
+    "visualContainerObjects": {
+      "title": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "text": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Adjusted Black-White denial gap within each lender (pp)'"
+                }
+              }
+            }
+          }
+        }
+      ]
+    }
+  }
+}

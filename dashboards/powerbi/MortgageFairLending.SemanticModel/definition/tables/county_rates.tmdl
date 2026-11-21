@@ -1,0 +1,71 @@
+table county_rates
+
+	column county
+		dataType: string
+		summarizeBy: none
+		sourceColumn: county
+
+	column state_code
+		dataType: string
+		summarizeBy: none
+		sourceColumn: state_code
+
+	column applications
+		dataType: int64
+		summarizeBy: sum
+		sourceColumn: applications
+
+	column denial_rate
+		dataType: double
+		formatString: 0.0%
+		summarizeBy: sum
+		sourceColumn: denial_rate
+
+	column denial_rate_white
+		dataType: double
+		formatString: 0.0%
+		summarizeBy: sum
+		sourceColumn: denial_rate_white
+
+	column denial_rate_black
+		dataType: double
+		formatString: 0.0%
+		summarizeBy: sum
+		sourceColumn: denial_rate_black
+
+	column denial_rate_hispanic
+		dataType: double
+		formatString: 0.0%
+		summarizeBy: sum
+		sourceColumn: denial_rate_hispanic
+
+	column apps_black
+		dataType: int64
+		summarizeBy: sum
+		sourceColumn: apps_black
+
+	column apps_hispanic
+		dataType: int64
+		summarizeBy: sum
+		sourceColumn: apps_hispanic
+
+	column median_income_k
+		dataType: double
+		summarizeBy: sum
+		sourceColumn: median_income_k
+
+	column mean_tract_minority_pct
+		dataType: double
+		summarizeBy: sum
+		sourceColumn: mean_tract_minority_pct
+
+	partition county_rates = m
+		mode: import
+		source =
+				let
+				    Source = Csv.Document(File.Contents(DataFolder & "county_rates.csv"), [Delimiter=",", Columns=11, Encoding=65001, QuoteStyle=QuoteStyle.Csv]),
+				    Headers = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),
+				    Typed = Table.TransformColumnTypes(Headers, {{"county", type text}, {"state_code", type text}, {"applications", Int64.Type}, {"denial_rate", type number}, {"denial_rate_white", type number}, {"denial_rate_black", type number}, {"denial_rate_hispanic", type number}, {"apps_black", Int64.Type}, {"apps_hispanic", Int64.Type}, {"median_income_k", type number}, {"mean_tract_minority_pct", type number}}, "en-US")
+				in
+				    Typed
+

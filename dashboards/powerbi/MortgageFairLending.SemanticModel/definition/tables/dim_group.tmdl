@@ -1,0 +1,28 @@
+table dim_group
+
+	column applicant_group
+		dataType: string
+		isKey
+		summarizeBy: none
+		sourceColumn: applicant_group
+
+	column group_order
+		dataType: int64
+		summarizeBy: sum
+		sourceColumn: group_order
+
+	column is_reference
+		dataType: int64
+		summarizeBy: sum
+		sourceColumn: is_reference
+
+	partition dim_group = m
+		mode: import
+		source =
+				let
+				    Source = Csv.Document(File.Contents(DataFolder & "dim_group.csv"), [Delimiter=",", Columns=3, Encoding=65001, QuoteStyle=QuoteStyle.Csv]),
+				    Headers = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),
+				    Typed = Table.TransformColumnTypes(Headers, {{"applicant_group", type text}, {"group_order", Int64.Type}, {"is_reference", Int64.Type}}, "en-US")
+				in
+				    Typed
+

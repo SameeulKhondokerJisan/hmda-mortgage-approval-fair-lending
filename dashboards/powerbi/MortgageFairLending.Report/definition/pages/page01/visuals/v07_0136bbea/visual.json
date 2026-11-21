@@ -1,0 +1,77 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.4.0/schema.json",
+  "name": "v07_0136bbea",
+  "position": {
+    "x": 850,
+    "y": 110,
+    "z": 7000,
+    "width": 420,
+    "height": 600,
+    "tabOrder": 7000
+  },
+  "visual": {
+    "visualType": "clusteredBarChart",
+    "query": {
+      "queryState": {
+        "Category": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "fact_applications"
+                    }
+                  },
+                  "Property": "state_code"
+                }
+              },
+              "queryRef": "fact_applications.state_code",
+              "nativeQueryRef": "state_code"
+            }
+          ]
+        },
+        "Y": {
+          "projections": [
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "fact_applications"
+                    }
+                  },
+                  "Property": "Denial rate"
+                }
+              },
+              "queryRef": "fact_applications.Denial rate",
+              "nativeQueryRef": "Denial rate"
+            }
+          ]
+        }
+      }
+    },
+    "visualContainerObjects": {
+      "title": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "text": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Denial rate by state'"
+                }
+              }
+            }
+          }
+        }
+      ]
+    }
+  }
+}

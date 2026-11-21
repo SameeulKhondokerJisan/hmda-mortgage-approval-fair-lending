@@ -1,0 +1,118 @@
+table fact_applications
+
+	measure Applications = SUM(fact_applications[applications])
+		formatString: #,0
+		displayFolder: Volume
+
+	measure Approved = SUM(fact_applications[approved])
+		formatString: #,0
+		displayFolder: Volume
+
+	measure Denied = SUM(fact_applications[denied])
+		formatString: #,0
+		displayFolder: Volume
+
+	measure Originated = SUM(fact_applications[originated])
+		formatString: #,0
+		displayFolder: Volume
+
+	measure 'Originated volume ($)' = SUM(fact_applications[originated_volume])
+		formatString: \$#,0
+		displayFolder: Volume
+
+	measure 'Approval rate' = DIVIDE([Approved], [Applications])
+		formatString: 0.0%
+		displayFolder: Rates
+
+	measure 'Denial rate' = DIVIDE([Denied], [Applications])
+		formatString: 0.0%
+		displayFolder: Rates
+
+	measure 'White approval rate' = CALCULATE([Approval rate], dim_group[applicant_group] = "White")
+		formatString: 0.0%
+		displayFolder: Fair lending
+
+	measure 'White denial rate' = CALCULATE([Denial rate], dim_group[applicant_group] = "White")
+		formatString: 0.0%
+		displayFolder: Fair lending
+
+	measure 'Approval AIR' = DIVIDE([Approval rate], [White approval rate])
+		formatString: 0.000
+		displayFolder: Fair lending
+
+	measure 'Denial-rate ratio' = DIVIDE([Denial rate], [White denial rate])
+		formatString: 0.00
+		displayFolder: Fair lending
+
+	measure 'Denial gap vs White (pp)' = ([Denial rate] - [White denial rate]) * 100
+		formatString: 0.0
+		displayFolder: Fair lending
+
+	measure 'Below four-fifths' = IF([Approval AIR] < 0.8, "Below 0.80", "Passes")
+		displayFolder: Fair lending
+
+	measure 'Share with DTI above 49%' = DIVIDE(CALCULATE([Applications], fact_applications[dti_band] IN {"7 50-60%", "8 >60%"}), [Applications])
+		formatString: 0.0%
+		displayFolder: Underwriting
+
+	column state_code
+		dataType: string
+		summarizeBy: none
+		sourceColumn: state_code
+
+	column loan_type
+		dataType: string
+		summarizeBy: none
+		sourceColumn: loan_type
+
+	column applicant_group
+		dataType: string
+		summarizeBy: none
+		sourceColumn: applicant_group
+
+	column dti_band
+		dataType: string
+		summarizeBy: none
+		sourceColumn: dti_band
+
+	column ltv_band
+		dataType: string
+		summarizeBy: none
+		sourceColumn: ltv_band
+
+	column applications
+		dataType: int64
+		summarizeBy: sum
+		sourceColumn: applications
+
+	column approved
+		dataType: double
+		summarizeBy: sum
+		sourceColumn: approved
+
+	column denied
+		dataType: double
+		summarizeBy: sum
+		sourceColumn: denied
+
+	column originated
+		dataType: double
+		summarizeBy: sum
+		sourceColumn: originated
+
+	column originated_volume
+		dataType: double
+		formatString: \$#,0
+		summarizeBy: sum
+		sourceColumn: originated_volume
+
+	partition fact_applications = m
+		mode: import
+		source =
+				let
+				    Source = Csv.Document(File.Contents(DataFolder & "fact_applications.csv"), [Delimiter=",", Columns=10, Encoding=65001, QuoteStyle=QuoteStyle.Csv]),
+				    Headers = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),
+				    Typed = Table.TransformColumnTypes(Headers, {{"state_code", type text}, {"loan_type", type text}, {"applicant_group", type text}, {"dti_band", type text}, {"ltv_band", type text}, {"applications", Int64.Type}, {"approved", type number}, {"denied", type number}, {"originated", type number}, {"originated_volume", type number}}, "en-US")
+				in
+				    Typed
+

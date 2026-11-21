@@ -1,0 +1,19 @@
+relationship c0125f13-689c-4113-960c-124c8c8a6c50
+	fromColumn: fact_applications.applicant_group
+	toColumn: dim_group.applicant_group
+
+relationship 67f8dc64-9903-4048-b7f3-34824ac72e70
+	fromColumn: income_tract.applicant_group
+	toColumn: dim_group.applicant_group
+
+relationship 226d261c-f340-4ee8-a8e1-3ce03c0f6ad6
+	fromColumn: denial_reasons.applicant_group
+	toColumn: dim_group.applicant_group
+
+relationship 9741bcd2-090c-4460-a889-98eb27de22ac
+	fromColumn: gap_ladder.applicant_group
+	toColumn: dim_group.applicant_group
+
+relationship ddf648a6-d84b-4cfb-9b65-e870915a0404
+	fromColumn: pricing_gaps.applicant_group
+	toColumn: dim_group.applicant_group

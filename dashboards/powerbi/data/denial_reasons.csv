@@ -1,0 +1,64 @@
+applicant_group,reason,denied_citing,denied_apps,share_of_denials
+Asian,Debt-to-income ratio,8943,18228,0.4906188281764319
+Asian,Collateral,2836,18228,0.1555848145709897
+Asian,Other,2345,18228,0.12864823348694315
+Asian,Unverifiable information,2274,18228,0.12475312705727452
+Asian,Insufficient cash,2152,18228,0.11806012727671714
+Asian,Credit application incomplete,1593,18228,0.08739302172481896
+Asian,Credit history,1514,18228,0.08305903006363836
+Asian,Employment history,1089,18228,0.0597432521395655
+Asian,Mortgage insurance denied,25,18228,0.0013715163484748739
+Black,Debt-to-income ratio,17873,38808,0.46054937126365697
+Black,Credit history,10816,38808,0.2787054215625644
+Black,Insufficient cash,5007,38808,0.12901978973407544
+Black,Other,4738,38808,0.12208822923108638
+Black,Collateral,4421,38808,0.11391981034838178
+Black,Unverifiable information,3639,38808,0.09376932591218305
+Black,Credit application incomplete,2291,38808,0.059034219748505465
+Black,Employment history,1930,38808,0.0497320140177283
+Black,Mortgage insurance denied,58,38808,0.0014945372088229231
+Hispanic,Debt-to-income ratio,26189,57144,0.4582983340333193
+Hispanic,Credit history,9440,57144,0.16519669606607867
+Hispanic,Collateral,8843,57144,0.15474940501189977
+Hispanic,Other,7467,57144,0.13066988660226794
+Hispanic,Insufficient cash,6878,57144,0.12036259274814504
+Hispanic,Unverifiable information,6637,57144,0.11614517709645807
+Hispanic,Credit application incomplete,3983,57144,0.06970110597788044
+Hispanic,Employment history,3052,57144,0.053408931821363574
+Hispanic,Mortgage insurance denied,93,57144,0.001627467450650987
+Joint,Debt-to-income ratio,5349,12694,0.4213801796124153
+Joint,Credit history,2766,12694,0.2178982196313219
+Joint,Collateral,1821,12694,0.1434536001260438
+Joint,Other,1592,12694,0.12541358121947377
+Joint,Insufficient cash,1399,12694,0.11020954781786671
+Joint,Unverifiable information,1227,12694,0.09665983929415471
+Joint,Credit application incomplete,1132,12694,0.08917598865605798
+Joint,Employment history,732,12694,0.05766503860091382
+Joint,Mortgage insurance denied,22,12694,0.0017331022530329288
+Not reported,Debt-to-income ratio,17447,42434,0.4111561483715888
+Not reported,Credit history,7307,42434,0.1721968233020691
+Not reported,Collateral,5988,42434,0.14111325823631993
+Not reported,Other,5449,42434,0.12841117971437999
+Not reported,Credit application incomplete,5030,42434,0.1185370221991799
+Not reported,Insufficient cash,4720,42434,0.11123155959843521
+Not reported,Unverifiable information,4625,42434,0.10899278880143282
+Not reported,Employment history,2004,42434,0.04722628081255597
+Not reported,Mortgage insurance denied,71,42434,0.001673186595654428
+Other minority,Debt-to-income ratio,1118,2526,0.442596991290578
+Other minority,Credit history,679,2526,0.2688044338875693
+Other minority,Collateral,326,2526,0.1290577988915281
+Other minority,Other,316,2526,0.1250989707046714
+Other minority,Insufficient cash,311,2526,0.12311955661124308
+Other minority,Unverifiable information,208,2526,0.08234362628661916
+Other minority,Credit application incomplete,192,2526,0.07600950118764846
+Other minority,Employment history,107,2526,0.042359461599366585
+Other minority,Mortgage insurance denied,6,2526,0.0023752969121140144
+White,Debt-to-income ratio,38720,100198,0.38643485897922114
+White,Collateral,19067,100198,0.19029321942553742
+White,Credit history,17948,100198,0.17912533184295096
+White,Other,12710,100198,0.12684883929818958
+White,Insufficient cash,11832,100198,0.11808618934509671
+White,Credit application incomplete,10712,100198,0.1069083215233837
+White,Unverifiable information,8995,100198,0.0897722509431326
+White,Employment history,5180,100198,0.051697638675422666
+White,Mortgage insurance denied,170,100198,0.0016966406515100101

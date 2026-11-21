@@ -1,0 +1,77 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.4.0/schema.json",
+  "name": "v06_682522ae",
+  "position": {
+    "x": 650,
+    "y": 110,
+    "z": 6000,
+    "width": 620,
+    "height": 290,
+    "tabOrder": 6000
+  },
+  "visual": {
+    "visualType": "clusteredColumnChart",
+    "query": {
+      "queryState": {
+        "Category": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "fact_applications"
+                    }
+                  },
+                  "Property": "ltv_band"
+                }
+              },
+              "queryRef": "fact_applications.ltv_band",
+              "nativeQueryRef": "ltv_band"
+            }
+          ]
+        },
+        "Y": {
+          "projections": [
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "fact_applications"
+                    }
+                  },
+                  "Property": "Denial rate"
+                }
+              },
+              "queryRef": "fact_applications.Denial rate",
+              "nativeQueryRef": "Denial rate"
+            }
+          ]
+        }
+      }
+    },
+    "visualContainerObjects": {
+      "title": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "text": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Denial rate by loan-to-value band'"
+                }
+              }
+            }
+          }
+        }
+      ]
+    }
+  }
+}

@@ -1,0 +1,157 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.4.0/schema.json",
+  "name": "v05_98241434",
+  "position": {
+    "x": 580,
+    "y": 110,
+    "z": 5000,
+    "width": 690,
+    "height": 600,
+    "tabOrder": 5000
+  },
+  "visual": {
+    "visualType": "tableEx",
+    "query": {
+      "queryState": {
+        "Values": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "lender_screen"
+                    }
+                  },
+                  "Property": "lender_name"
+                }
+              },
+              "queryRef": "lender_screen.lender_name",
+              "nativeQueryRef": "lender_name"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "lender_screen"
+                    }
+                  },
+                  "Property": "applications"
+                }
+              },
+              "queryRef": "lender_screen.applications",
+              "nativeQueryRef": "applications"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "lender_screen"
+                    }
+                  },
+                  "Property": "denial_rate"
+                }
+              },
+              "queryRef": "lender_screen.denial_rate",
+              "nativeQueryRef": "denial_rate"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "lender_screen"
+                    }
+                  },
+                  "Property": "adj_gap_black"
+                }
+              },
+              "queryRef": "lender_screen.adj_gap_black",
+              "nativeQueryRef": "adj_gap_black"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "lender_screen"
+                    }
+                  },
+                  "Property": "ci_low_black"
+                }
+              },
+              "queryRef": "lender_screen.ci_low_black",
+              "nativeQueryRef": "ci_low_black"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "lender_screen"
+                    }
+                  },
+                  "Property": "ci_high_black"
+                }
+              },
+              "queryRef": "lender_screen.ci_high_black",
+              "nativeQueryRef": "ci_high_black"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "lender_screen"
+                    }
+                  },
+                  "Property": "adj_gap_hispanic"
+                }
+              },
+              "queryRef": "lender_screen.adj_gap_hispanic",
+              "nativeQueryRef": "adj_gap_hispanic"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "lender_screen"
+                    }
+                  },
+                  "Property": "screen"
+                }
+              },
+              "queryRef": "lender_screen.screen",
+              "nativeQueryRef": "screen"
+            }
+          ]
+        }
+      }
+    },
+    "visualContainerObjects": {
+      "title": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "text": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Lender screen (screening statistics)'"
+                }
+              }
+            }
+          }
+        }
+      ]
+    }
+  }
+}

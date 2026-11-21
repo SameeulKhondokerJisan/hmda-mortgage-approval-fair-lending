@@ -1,0 +1,87 @@
+table lender_screen
+
+	measure 'Lenders screened' = COUNTROWS(lender_screen)
+		formatString: #,0
+
+	measure 'Lenders with an adjusted gap above zero' = COUNTROWS(FILTER(lender_screen, lender_screen[ci_low_black] > 0 || lender_screen[ci_low_hispanic] > 0))
+		formatString: #,0
+
+	measure 'Adjusted Black gap (pp)' = AVERAGE(lender_screen[adj_gap_black])
+		formatString: 0.0
+
+	column lender_name
+		dataType: string
+		summarizeBy: none
+		sourceColumn: lender_name
+
+	column applications
+		dataType: int64
+		summarizeBy: sum
+		sourceColumn: applications
+
+	column denial_rate
+		dataType: double
+		formatString: 0.0%
+		summarizeBy: sum
+		sourceColumn: denial_rate
+
+	column counties
+		dataType: int64
+		summarizeBy: sum
+		sourceColumn: counties
+
+	column raw_gap_black
+		dataType: double
+		summarizeBy: sum
+		sourceColumn: raw_gap_black
+
+	column adj_gap_black
+		dataType: double
+		summarizeBy: sum
+		sourceColumn: adj_gap_black
+
+	column ci_low_black
+		dataType: double
+		summarizeBy: sum
+		sourceColumn: ci_low_black
+
+	column ci_high_black
+		dataType: double
+		summarizeBy: sum
+		sourceColumn: ci_high_black
+
+	column raw_gap_hispanic
+		dataType: double
+		summarizeBy: sum
+		sourceColumn: raw_gap_hispanic
+
+	column adj_gap_hispanic
+		dataType: double
+		summarizeBy: sum
+		sourceColumn: adj_gap_hispanic
+
+	column ci_low_hispanic
+		dataType: double
+		summarizeBy: sum
+		sourceColumn: ci_low_hispanic
+
+	column ci_high_hispanic
+		dataType: double
+		summarizeBy: sum
+		sourceColumn: ci_high_hispanic
+
+	column screen
+		dataType: string
+		summarizeBy: none
+		sourceColumn: screen
+
+	partition lender_screen = m
+		mode: import
+		source =
+				let
+				    Source = Csv.Document(File.Contents(DataFolder & "lender_screen.csv"), [Delimiter=",", Columns=13, Encoding=65001, QuoteStyle=QuoteStyle.Csv]),
+				    Headers = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),
+				    Typed = Table.TransformColumnTypes(Headers, {{"lender_name", type text}, {"applications", Int64.Type}, {"denial_rate", type number}, {"counties", Int64.Type}, {"raw_gap_black", type number}, {"adj_gap_black", type number}, {"ci_low_black", type number}, {"ci_high_black", type number}, {"raw_gap_hispanic", type number}, {"adj_gap_hispanic", type number}, {"ci_low_hispanic", type number}, {"ci_high_hispanic", type number}, {"screen", type text}}, "en-US")
+				in
+				    Typed
+

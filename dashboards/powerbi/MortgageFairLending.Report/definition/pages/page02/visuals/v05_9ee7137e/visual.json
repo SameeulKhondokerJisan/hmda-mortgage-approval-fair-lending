@@ -1,0 +1,95 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.4.0/schema.json",
+  "name": "v05_9ee7137e",
+  "position": {
+    "x": 10,
+    "y": 110,
+    "z": 5000,
+    "width": 630,
+    "height": 290,
+    "tabOrder": 5000
+  },
+  "visual": {
+    "visualType": "lineChart",
+    "query": {
+      "queryState": {
+        "Category": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "dti_profile"
+                    }
+                  },
+                  "Property": "dti_value"
+                }
+              },
+              "queryRef": "dti_profile.dti_value",
+              "nativeQueryRef": "dti_value"
+            }
+          ]
+        },
+        "Series": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "dti_profile"
+                    }
+                  },
+                  "Property": "loan_type"
+                }
+              },
+              "queryRef": "dti_profile.loan_type",
+              "nativeQueryRef": "loan_type"
+            }
+          ]
+        },
+        "Y": {
+          "projections": [
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "dti_profile"
+                    }
+                  },
+                  "Property": "Denial rate by DTI"
+                }
+              },
+              "queryRef": "dti_profile.Denial rate by DTI",
+              "nativeQueryRef": "Denial rate by DTI"
+            }
+          ]
+        }
+      }
+    },
+    "visualContainerObjects": {
+      "title": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "text": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Denial rate by debt-to-income ratio (36-49% exact, others banded)'"
+                }
+              }
+            }
+          }
+        }
+      ]
+    }
+  }
+}

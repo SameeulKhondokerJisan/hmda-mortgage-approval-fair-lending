@@ -1,0 +1,49 @@
+table gap_ladder
+
+	measure 'Denial gap (pp)' = AVERAGE(gap_ladder[gap_pp])
+		formatString: 0.0
+
+	column spec
+		dataType: string
+		summarizeBy: none
+		sourceColumn: spec
+
+	column applicant_group
+		dataType: string
+		summarizeBy: none
+		sourceColumn: applicant_group
+
+	column gap_pp
+		dataType: double
+		formatString: 0.0
+		summarizeBy: sum
+		sourceColumn: gap_pp
+
+	column ci_low_pp
+		dataType: double
+		formatString: 0.0
+		summarizeBy: sum
+		sourceColumn: ci_low_pp
+
+	column ci_high_pp
+		dataType: double
+		formatString: 0.0
+		summarizeBy: sum
+		sourceColumn: ci_high_pp
+
+	column p
+		dataType: double
+		formatString: 0.0000
+		summarizeBy: sum
+		sourceColumn: p
+
+	partition gap_ladder = m
+		mode: import
+		source =
+				let
+				    Source = Csv.Document(File.Contents(DataFolder & "gap_ladder.csv"), [Delimiter=",", Columns=6, Encoding=65001, QuoteStyle=QuoteStyle.Csv]),
+				    Headers = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),
+				    Typed = Table.TransformColumnTypes(Headers, {{"spec", type text}, {"applicant_group", type text}, {"gap_pp", type number}, {"ci_low_pp", type number}, {"ci_high_pp", type number}, {"p", type number}}, "en-US")
+				in
+				    Typed
+

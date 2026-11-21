@@ -1,0 +1,49 @@
+table pricing_gaps
+
+	measure 'Rate spread gap (bps)' = AVERAGE(pricing_gaps[gap_bps])
+		formatString: 0.0
+
+	column spec
+		dataType: string
+		summarizeBy: none
+		sourceColumn: spec
+
+	column applicant_group
+		dataType: string
+		summarizeBy: none
+		sourceColumn: applicant_group
+
+	column gap_bps
+		dataType: double
+		formatString: 0.0
+		summarizeBy: sum
+		sourceColumn: gap_bps
+
+	column ci_low_bps
+		dataType: double
+		formatString: 0.0
+		summarizeBy: sum
+		sourceColumn: ci_low_bps
+
+	column ci_high_bps
+		dataType: double
+		formatString: 0.0
+		summarizeBy: sum
+		sourceColumn: ci_high_bps
+
+	column p
+		dataType: double
+		formatString: 0.0000
+		summarizeBy: sum
+		sourceColumn: p
+
+	partition pricing_gaps = m
+		mode: import
+		source =
+				let
+				    Source = Csv.Document(File.Contents(DataFolder & "pricing_gaps.csv"), [Delimiter=",", Columns=6, Encoding=65001, QuoteStyle=QuoteStyle.Csv]),
+				    Headers = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),
+				    Typed = Table.TransformColumnTypes(Headers, {{"spec", type text}, {"applicant_group", type text}, {"gap_bps", type number}, {"ci_low_bps", type number}, {"ci_high_bps", type number}, {"p", type number}}, "en-US")
+				in
+				    Typed
+

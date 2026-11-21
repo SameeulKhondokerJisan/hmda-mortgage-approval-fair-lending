@@ -1,0 +1,95 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.4.0/schema.json",
+  "name": "v03_f89e4fdd",
+  "position": {
+    "x": 10,
+    "y": 320,
+    "z": 3000,
+    "width": 630,
+    "height": 390,
+    "tabOrder": 3000
+  },
+  "visual": {
+    "visualType": "pivotTable",
+    "query": {
+      "queryState": {
+        "Rows": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "income_tract"
+                    }
+                  },
+                  "Property": "tract_minority_band"
+                }
+              },
+              "queryRef": "income_tract.tract_minority_band",
+              "nativeQueryRef": "tract_minority_band"
+            }
+          ]
+        },
+        "Columns": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "income_tract"
+                    }
+                  },
+                  "Property": "income_band"
+                }
+              },
+              "queryRef": "income_tract.income_band",
+              "nativeQueryRef": "income_band"
+            }
+          ]
+        },
+        "Values": {
+          "projections": [
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "income_tract"
+                    }
+                  },
+                  "Property": "Denial rate (income and tract)"
+                }
+              },
+              "queryRef": "income_tract.Denial rate (income and tract)",
+              "nativeQueryRef": "Denial rate (income and tract)"
+            }
+          ]
+        }
+      }
+    },
+    "visualContainerObjects": {
+      "title": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "text": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Denial rate: tract minority share x applicant income band'"
+                }
+              }
+            }
+          }
+        }
+      ]
+    }
+  }
+}

@@ -1,0 +1,129 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.4.0/schema.json",
+  "name": "v08_c124b626",
+  "position": {
+    "x": 10,
+    "y": 410,
+    "z": 8000,
+    "width": 830,
+    "height": 300,
+    "tabOrder": 8000
+  },
+  "visual": {
+    "visualType": "tableEx",
+    "query": {
+      "queryState": {
+        "Values": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "county_rates"
+                    }
+                  },
+                  "Property": "county"
+                }
+              },
+              "queryRef": "county_rates.county",
+              "nativeQueryRef": "county"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "county_rates"
+                    }
+                  },
+                  "Property": "applications"
+                }
+              },
+              "queryRef": "county_rates.applications",
+              "nativeQueryRef": "applications"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "county_rates"
+                    }
+                  },
+                  "Property": "denial_rate"
+                }
+              },
+              "queryRef": "county_rates.denial_rate",
+              "nativeQueryRef": "denial_rate"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "county_rates"
+                    }
+                  },
+                  "Property": "denial_rate_white"
+                }
+              },
+              "queryRef": "county_rates.denial_rate_white",
+              "nativeQueryRef": "denial_rate_white"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "county_rates"
+                    }
+                  },
+                  "Property": "denial_rate_black"
+                }
+              },
+              "queryRef": "county_rates.denial_rate_black",
+              "nativeQueryRef": "denial_rate_black"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "county_rates"
+                    }
+                  },
+                  "Property": "denial_rate_hispanic"
+                }
+              },
+              "queryRef": "county_rates.denial_rate_hispanic",
+              "nativeQueryRef": "denial_rate_hispanic"
+            }
+          ]
+        }
+      }
+    },
+    "visualContainerObjects": {
+      "title": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "text": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Counties with 500+ applications'"
+                }
+              }
+            }
+          }
+        }
+      ]
+    }
+  }
+}

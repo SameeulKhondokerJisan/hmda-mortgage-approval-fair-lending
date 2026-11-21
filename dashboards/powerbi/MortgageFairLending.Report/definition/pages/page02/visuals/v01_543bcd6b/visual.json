@@ -1,0 +1,37 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.4.0/schema.json",
+  "name": "v01_543bcd6b",
+  "position": {
+    "x": 10,
+    "y": 10,
+    "z": 1000,
+    "width": 306,
+    "height": 90,
+    "tabOrder": 1000
+  },
+  "visual": {
+    "visualType": "card",
+    "query": {
+      "queryState": {
+        "Values": {
+          "projections": [
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "fact_applications"
+                    }
+                  },
+                  "Property": "Share with DTI above 49%"
+                }
+              },
+              "queryRef": "fact_applications.Share with DTI above 49%",
+              "nativeQueryRef": "Share with DTI above 49%"
+            }
+          ]
+        }
+      }
+    }
+  }
+}

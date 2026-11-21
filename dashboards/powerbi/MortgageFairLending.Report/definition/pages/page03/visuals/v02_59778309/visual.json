@@ -1,0 +1,95 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.4.0/schema.json",
+  "name": "v02_59778309",
+  "position": {
+    "x": 650,
+    "y": 10,
+    "z": 2000,
+    "width": 620,
+    "height": 300,
+    "tabOrder": 2000
+  },
+  "visual": {
+    "visualType": "clusteredColumnChart",
+    "query": {
+      "queryState": {
+        "Category": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "gap_ladder"
+                    }
+                  },
+                  "Property": "spec"
+                }
+              },
+              "queryRef": "gap_ladder.spec",
+              "nativeQueryRef": "spec"
+            }
+          ]
+        },
+        "Series": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "dim_group"
+                    }
+                  },
+                  "Property": "applicant_group"
+                }
+              },
+              "queryRef": "dim_group.applicant_group",
+              "nativeQueryRef": "applicant_group"
+            }
+          ]
+        },
+        "Y": {
+          "projections": [
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "gap_ladder"
+                    }
+                  },
+                  "Property": "Denial gap (pp)"
+                }
+              },
+              "queryRef": "gap_ladder.Denial gap (pp)",
+              "nativeQueryRef": "Denial gap (pp)"
+            }
+          ]
+        }
+      }
+    },
+    "visualContainerObjects": {
+      "title": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "text": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Denial gap vs White as controls are added (pp)'"
+                }
+              }
+            }
+          }
+        }
+      ]
+    }
+  }
+}

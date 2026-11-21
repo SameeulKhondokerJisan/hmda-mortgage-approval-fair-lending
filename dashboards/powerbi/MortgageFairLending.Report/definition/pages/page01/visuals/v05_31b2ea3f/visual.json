@@ -1,0 +1,77 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.4.0/schema.json",
+  "name": "v05_31b2ea3f",
+  "position": {
+    "x": 10,
+    "y": 110,
+    "z": 5000,
+    "width": 400,
+    "height": 290,
+    "tabOrder": 5000
+  },
+  "visual": {
+    "visualType": "clusteredColumnChart",
+    "query": {
+      "queryState": {
+        "Category": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "fact_applications"
+                    }
+                  },
+                  "Property": "loan_type"
+                }
+              },
+              "queryRef": "fact_applications.loan_type",
+              "nativeQueryRef": "loan_type"
+            }
+          ]
+        },
+        "Y": {
+          "projections": [
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "fact_applications"
+                    }
+                  },
+                  "Property": "Denial rate"
+                }
+              },
+              "queryRef": "fact_applications.Denial rate",
+              "nativeQueryRef": "Denial rate"
+            }
+          ]
+        }
+      }
+    },
+    "visualContainerObjects": {
+      "title": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "text": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Denial rate by loan type'"
+                }
+              }
+            }
+          }
+        }
+      ]
+    }
+  }
+}

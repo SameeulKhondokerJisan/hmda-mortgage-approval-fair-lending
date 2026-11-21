@@ -1,0 +1,8 @@
+applicant_group,group_order,is_reference
+White,1,1
+Black,2,0
+Hispanic,3,0
+Asian,4,0
+Other minority,5,0
+Joint,6,0
+Not reported,7,0
